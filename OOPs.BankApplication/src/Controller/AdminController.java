@@ -1,5 +1,6 @@
 package Controller;
 
+import Sbi.ServiceImpl.HDFC;
 import Sbi.ServiceImpl.SBI;
 
 import java.util.Scanner;
@@ -9,6 +10,7 @@ public class AdminController {
     {
         Scanner sc=new Scanner(System.in);
         SBI sbi=new SBI();
+        HDFC hdfc=new HDFC();
 
         int select;
 
@@ -29,7 +31,8 @@ public class AdminController {
             switch (select)
             {
                 case 1:
-                    sbi.OpenAccount();
+//                    sbi.OpenAccount();
+                    hdfc.OpenAccount();
                     break;
 
                 case 2:

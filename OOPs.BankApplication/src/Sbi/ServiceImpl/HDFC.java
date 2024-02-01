@@ -20,7 +20,26 @@ public class HDFC implements RBI {
         int mobile = getValidMobile();
         account1.setMobile(mobile);
 
+        String email=getValidEmail();
 
+
+
+
+    }
+
+    private String getValidEmail() {
+        System.out.println("Enter your Gmail");
+        String email=sc.next();
+
+        if(email.endsWith("@gmail.com") || email.endsWith("@yahoo.com") || email.endsWith("@redifmail.com"))
+        {
+            return email;
+        }
+        else
+        {
+            System.out.println("Please enter valid email");
+            return getValidEmail();
+        }
 
     }
 
@@ -49,8 +68,10 @@ public class HDFC implements RBI {
             return getValidName();
 
         }
-
-        return name;
+        else
+        {
+            return name;
+        }
     }
 
     @Override
