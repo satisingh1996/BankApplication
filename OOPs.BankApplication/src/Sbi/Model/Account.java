@@ -2,9 +2,9 @@ package Sbi.Model;
 
 public class Account {
     private String name;
-    private int account;
-    private int pin;
-    private int mobile;
+    private String account;
+    private String pin;
+    private String mobile;
     private String gmail;
     private String gender;
     private String city;
@@ -19,27 +19,27 @@ public class Account {
         this.name = name;
     }
 
-    public int getAccount() {
+    public String getAccount() {
         return account;
     }
 
-    public void setAccount(int account) {
+    public void setAccount(String account) {
         this.account = account;
     }
 
-    public int getPin() {
+    public String getPin() {
         return pin;
     }
 
-    public void setPin(int pin) {
+    public void setPin(String pin) {
         this.pin = pin;
     }
 
-    public int getMobile() {
+    public String getMobile() {
         return mobile;
     }
 
-    public void setMobile(int mobile) {
+    public void setMobile(String mobile) {
         this.mobile = mobile;
     }
 
