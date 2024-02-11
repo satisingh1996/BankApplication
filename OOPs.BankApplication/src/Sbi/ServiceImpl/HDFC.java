@@ -4,6 +4,7 @@ import Sbi.Model.Account;
 import Sbi.Service.RBI;
 
 import java.util.Scanner;
+import java.util.regex.*;
 
 public class HDFC implements RBI {
     Account account1 = new Account();
@@ -11,7 +12,6 @@ public class HDFC implements RBI {
 
     @Override
     public void OpenAccount() {
-
 
         System.out.println("============Account creating============");
 
@@ -71,12 +71,14 @@ public class HDFC implements RBI {
     private String getValidPan() {
         System.out.println("Enter your Pan Card Number");
         String pan = sc.next();
-        String validatePan="\\d{5}[A-Z]{5}";
-        char[] panChar = pan.toCharArray();
-        if (pan.length() == 10) {
+        String regex = "^[A-Z]{5}\\d{5}$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(pan);
+
+        if (pan.length() == 10 && matcher.matches()) {
             return pan;
         } else {
-            System.out.println("Pan number sould be 10 digit in alphanumeric");
+            System.out.println("Pan number should be 10 digit in alphanumeric");
             return getValidPan();
         }
 
@@ -118,10 +120,10 @@ public class HDFC implements RBI {
     private String getValidPin() {
         System.out.println("Enter your ATM Pin");
         String pin = sc.next();
-        String Spin = pin.replaceAll("[^0-9]", "");
+        String atmPin = pin.replaceAll("[^0-9]", "");
 
-        if (pin.length() == 4) {
-            return pin;
+        if (atmPin.length() == 4) {
+            return atmPin;
         } else {
             System.out.println("Please enter 4 digit pin");
             return getValidPin();
@@ -131,10 +133,10 @@ public class HDFC implements RBI {
     private String getValidAccount() {
         System.out.println("Enter your Account Number");
         String account = sc.next();
-        String Spin = account.replaceAll("[^0-9]", "");
+        String accountNumber = account.replaceAll("[^0-9]", "");
 
-        if (account.length() == 11) {
-            return account;
+        if (accountNumber.length() == 11) {
+            return accountNumber;
         } else {
             System.out.println("Please enter 11 digit account number");
             return getValidAccount();
@@ -157,11 +159,11 @@ public class HDFC implements RBI {
     private String getValidMobile() {
         System.out.println("Enter your mobile number");
         String mobile = sc.next();
-        String Spin = mobile.replaceAll("[^0-9]", "");
+        String mobileNumber = mobile.replaceAll("[^0-9]", "");
 
-        if (mobile.length() == 10 && (mobile.startsWith("7") ||
-                mobile.startsWith("8") || mobile.startsWith("9"))) {
-            return mobile;
+        if (mobileNumber.length() == 10 && (mobileNumber.startsWith("7") ||
+                mobileNumber.startsWith("8") || mobileNumber.startsWith("9"))) {
+            return mobileNumber;
         } else {
             System.out.println("Please enter 10 digit mobile number & it will starts with 7,8,9");
             return getValidMobile();
